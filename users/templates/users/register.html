@@ -1,0 +1,98 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="{% static 'css/styles2.css' %}">
+</head>
+<body>
+    <section class="vh-100 bg-image">
+        <div class="mask d-flex align-items-center h-100 gradient-custom">
+            <div class="container h-100">
+                <div class="row d-flex justify-content-center align-items-center h-100">
+                    <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                        <div class="card bg-dark text-white" style="border-radius: 15px;">
+                            <div class="card-body p-5">
+                                <h2 class="text-uppercase text-center mb-5 text-light">Create Your Free Account</h2>
+                                <p class="text-center text-muted mb-4">Sign up today and start exploring amazing features!</p>
+
+                                <!-- Form Başlangıcı -->
+                                <form method="POST" action="{% url 'users:register' %}">
+                                    {% csrf_token %}
+
+                                    <!-- Form Hatalarını Göster -->
+                                    {% if form.errors %}
+                                        <div class="alert alert-danger">
+                                            {% for field in form %}
+                                                {% if field.errors %}
+                                                    <strong>{{ field.label }}:</strong>
+                                                    {% for error in field.errors %}
+                                                        <p>{{ error }}</p>
+                                                    {% endfor %}
+                                                {% endif %}
+                                            {% endfor %}
+                                        </div>
+                                        {% if form.non_field_errors %}
+                                            <div class="alert alert-warning">
+                                                {% for error in form.non_field_errors %}
+                                                    <p>{{ error }}</p>
+                                                {% endfor %}
+                                            </div>
+                                        {% endif %}
+                                    {% endif %}
+
+                                    <!-- Kullanıcı Adı -->
+                                    <div class="form-group mb-4">
+                                        <label for="id_username">Username</label>
+                                        {{ form.username }}
+                                        {% for error in form.username.errors %}
+                                            <div class="text-danger small">{{ error }}</div>
+                                        {% endfor %}
+                                    </div>
+
+                                    <!-- Şifre -->
+                                    <div class="form-group mb-4">
+                                        <label for="id_password1">Password</label>
+                                        {{ form.password1 }}
+                                        {% for error in form.password1.errors %}
+                                            <div class="text-danger small">{{ error }}</div>
+                                        {% endfor %}
+                                    </div>
+
+                                    <!-- Şifre Doğrulama -->
+                                    <div class="form-group mb-4">
+                                        <label for="id_password2">Confirm Password</label>
+                                        {{ form.password2 }}
+                                        {% for error in form.password2.errors %}
+                                            <div class="text-danger small">{{ error }}</div>
+                                        {% endfor %}
+                                    </div>
+
+                                    <!-- Kayıt Butonu -->
+                                    <div class="d-flex justify-content-center">
+                                        <button type="submit" class="btn btn-success btn-lg gradient-custom text-dark">REGISTER</button>
+                                    </div>
+
+                                    <!-- Giriş Sayfasına Yönlendirme -->
+                                    <p class="text-center text-muted mt-5 mb-0">
+                                        Already have an account? <a href="{% url 'users:login' %}" class="fw-bold text-primary"><u>Log in here</u></a>
+                                    </p>
+                                </form>
+                                <!-- Form Sonu -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

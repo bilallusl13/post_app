@@ -1,0 +1,50 @@
+/* Tüm sayfayı kaplayan ve flexbox kullanan bir yapı */
+body, html {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    background: url('{% static "images/background.jpg" %}') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    justify-content: center; /* Yatayda ortala */
+    align-items: center;     /* Dikeyde ortala */
+    font-family: Arial, sans-serif;
+}
+
+/* Form kartı */
+.form-container {
+    background: rgba(255, 255, 255, 0.9); /* Hafif beyaz opak arka plan */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 400px; /* Maksimum genişlik */
+    text-align: center;
+}
+
+/* Input alanları */
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Buton */
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+
+button:hover {
+    background-color: #0056b3;
+}

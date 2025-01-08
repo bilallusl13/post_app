@@ -1,0 +1,62 @@
+/* Arkaplan Resmi ve Gradient */
+.bg-image {
+    background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* Gradient Mask */
+.gradient-custom {
+    background: rgba(0, 0, 0, 0.5); /* Arkaplanı hafif koyulaştır */
+    backdrop-filter: blur(4px);
+}
+
+/* Card Özelleştirmesi */
+.card {
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Form Inputları */
+.form-outline input {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border: none;
+    border-bottom: 2px solid #00e676;
+    outline: none;
+}
+
+.form-outline input:focus {
+    background-color: rgba(255, 255, 255, 0.2);
+    box-shadow: none;
+}
+
+/* Button Özelleştirmesi */
+.btn-success {
+    background-color: #00e676;
+    border: none;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.btn-success:hover {
+    background-color: #00c853;
+}
+
+/* Linkler */
+.text-light u {
+    text-decoration: none;
+}
+
+.text-light u:hover {
+    text-decoration: underline;
+    color: #00e676;
+}
+
+/* Responsive Ayarlar */
+@media (max-width: 768px) {
+    .card {
+        padding: 20px;
+    }
+}

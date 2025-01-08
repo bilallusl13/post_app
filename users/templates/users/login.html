@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <!-- CSS dosyasını ekleme -->
+    <link rel="stylesheet" href="{% static 'users/css/styles.css' %}">
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login</h2>
+        
+        <!-- Hata mesajlarını göster -->
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li class="{{ message.tags }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        <form action="{% url 'users:login' %}" method="POST">
+            {% csrf_token %}
+            
+            <!-- Gizli 'next' alanı -->
+            {% if request.GET.next %}
+                <input type="hidden" name="next" value="{{ request.GET.next }}">
+            {% endif %}
+
+            {{ form.non_field_errors }} <!-- Genel hataları göster -->
+
+            <!-- Kullanıcı adı -->
+            <div class="form-group">
+                <label for="username">Username:</label>
+                {{ form.username.errors }} <!-- Kullanıcı adı hatalarını göster -->
+                {{ form.username }} <!-- Kullanıcı adı input -->
+            </div>
+
+            <!-- Şifre -->
+            <div class="form-group">
+                <label for="password">Password:</label>
+                {{ form.password.errors }} <!-- Şifre hatalarını göster -->
+                {{ form.password }} <!-- Şifre input -->
+            </div>
+
+            <button type="submit" class="login-btn">Login</button>
+        </form>
+
+        <p>Don't have an account? <a href="{% url 'users:register' %}">Sign up</a></p>
+    </div>
+</body>
+</html>
